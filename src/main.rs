@@ -17,5 +17,7 @@ async fn main(spawner: Spawner) {
     info!("Nucleo-F446RE Initialized!");
 
     spawner.spawn(blink_task(peripherals.PA5.into())).unwrap();
-    spawner.spawn(button_task(peripherals.PC13.into())).unwrap();
+    spawner
+        .spawn(button_task(peripherals.PC13.into(), peripherals.EXTI13.into()))
+        .unwrap();
 }
