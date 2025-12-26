@@ -1,21 +1,21 @@
 #![no_std]
 #![no_main]
 
-use cortex_m_rt::entry;
-use cortex_m::asm::nop;
 use defmt::info;
 use defmt_rtt as _;
+use embassy_executor::Spawner;
 use panic_probe as _;
 
-#[entry]
-fn main() -> ! {
-    info!("Hello stm32");
-    let mut cnt = 0;
-    loop {
-        for _ in 0..900_000 {
-            nop();
-        }
-        info!("Cnt: {}", cnt);
-        cnt += 1;
-    }
+mod tasks;
+
+use crate::tasks::blink::blink_task;
+use crate::tasks::button::button_task;
+
+#[embassy_executor::main]
+async fn main(spawner: Spawner) {
+    let peripherals = embassy_stm32::init(Default::default());
+    info!("Nucleo-F446RE Initialized!");
+
+    spawner.spawn(blink_task(peripherals.PA5.into())).unwrap();
+    spawner.spawn(button_task(peripherals.PC13.into())).unwrap();
 }
