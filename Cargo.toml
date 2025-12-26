@@ -11,6 +11,10 @@ panic-probe = { version = "1.0.0", features = ["print-defmt"] }
 embassy-stm32 = { version = "0.4.0", features = ["defmt", "stm32f446re", "unstable-pac", "memory-x", "time-driver-any", "exti"] }
 embassy-executor = { version = "0.9.0", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
 embassy-time = { version = "0.5.0", features = ["defmt", "defmt-timestamp-uptime", "tick-hz-32_768"] }
+embassy-sync = { version = "0.7.2", features = ["defmt"]}
+
+tm1637-embedded-hal = "0.5.1"
+hcsr04_async = { version = "0.4.0", features = ["blocking_trigger"] }
 
 defmt = "1.0.1"
 defmt-rtt = "1.0.0"
