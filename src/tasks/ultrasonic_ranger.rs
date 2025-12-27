@@ -42,7 +42,7 @@ pub async fn ultrasonic_task(
     let mut sensor = Hcsr04::new(trigger, echo, hcsr04_config, Clock, Delay);
 
     loop {
-        let distance_cm = match sensor.measure(ULTRASONIC_TEMPERATURE).await {
+        let distance_cm = match sensor.measure(ULTRASONIC_TEMPERATURE, 250).await {
             Ok(distance_cm) => distance_cm,
             Err(e) => {
                 error!("Error: {}", e);

@@ -19,6 +19,10 @@ hcsr04_async = { version = "0.4.0", features = ["blocking_trigger"] }
 defmt = "1.0.1"
 defmt-rtt = "1.0.0"
 
+[patch.crates-io]
+# Redirect all requests for this crate to your fork
+hcsr04_async = { git = "https://github.com/torbeeen/hcsr04_async.git" }
+
 [profile.release]
 debug = 2
 codegen-units = 1

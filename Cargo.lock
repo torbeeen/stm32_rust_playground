@@ -617,8 +617,7 @@ dependencies = [
 [[package]]
 name = "hcsr04_async"
 version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c78c80df8c6331c5a6559c57fb95a789d1ead07e159d250009c5bc131ba5de4"
+source = "git+https://github.com/torbeeen/hcsr04_async.git#b3ce17d16255cacae8550f78ea73cfdad2ebe820"
 dependencies = [
  "defmt 0.3.100",
  "embedded-hal 1.0.0",
